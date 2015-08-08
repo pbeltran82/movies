@@ -1,0 +1,153 @@
+
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+            background-color: #ECECEC;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: #ECECEC;
+        }
+        h5 {
+            font-family: Arial;
+            font-size: 12px;
+            color: #555555;
+            text-align: center;
+            font-style: italic
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="yftHosO0eUo" data-toggle="modal" data-target="#trailer">
+    <img src="http://i1.wp.com/2.bp.blogspot.com/-1dnTvqfCj1Y/VMiBivwRQKI/AAAAAAAAAD0/fUsh7rfAmTE/s1600/San%2Bandreas%2BPoster.jpg" width="220" height="342">
+    <h2>San Andreas</h2>
+    <h5>A big earthquake hits hard in California, and the after math is devasting.</h5>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="SEQ8jyvmYtw" data-toggle="modal" data-target="#trailer">
+    <img src="http://thesecondtake.com/wp-content/uploads/2013/04/Pain-and-Gain-New-Poster-4-4.jpg" width="220" height="342">
+    <h2>Pain and Gain</h2>
+    <h5>A group of muscle heads do everything to achieve the American dream at all costs.</h5>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="p4Y-0Pun2Eg" data-toggle="modal" data-target="#trailer">
+    <img src="http://ilarge.lisimg.com/image/4757/968full-the-sum-of-all-fears-poster.jpg" width="220" height="342">
+    <h2>Sum of all Fears</h2>
+    <h5>CIA analyst must prevent a terrorist bomb attack that would cause a nuclear war between USA and Russia.</h5>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="Aqn2L6kQQt8" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTUxMjI1OTMxNl5BMl5BanBnXkFtZTcwNjc3NTY1OA@@._V1_SX640_SY720_.jpg" width="220" height="342">
+    <h2>Flight</h2>
+    <h5>A pilot under the influence manages to land a faulty commercial airline plane but comes under a lot of investigation.</h5>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="4_I3tIjztj8" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTk0MTQ3NDQ4Ml5BMl5BanBnXkFtZTcwOTQ3OTQzMw@@._V1_SX640_SY720_.jpg" width="220" height="342">
+    <h2>Borat</h2>
+    <h5>A Kazakhstan journalist comes to the USA to learn American customs and film a video to take back to his country.</h5>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="99k3u9ay1gs" data-toggle="modal" data-target="#trailer">
+    <img src="http://www.joblo.com/newsimages1/American-Sniper-Poster1.jpg" width="220" height="342">
+    <h2>American Sniper</h2>
+    <h5>Navy SEAL sniper Chris Kyle's pinpoint accuracy saves countless lives on the battlefield.</h5>
+</div>
+
+    </div>
+  </body>
+</html>
